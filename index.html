@@ -1,3 +1,174 @@
-<html>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mezban Ghar – Brahmanbaria Restaurant (24/7 open)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f4ee;--surface:#fff;--ink:#12392e;--muted:#4d6a60;--chili:#c8302b;--gold:#f2b632;--line:#d4ddd3;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1f1a;--surface:#17302a;--ink:#eef3ec;--muted:#a3b8ae;--chili:#ff6b5e;--gold:#f2b632;--line:#2a4a41}}
+:root[data-theme="dark"]{--bg:#0f1f1a;--surface:#17302a;--ink:#eef3ec;--muted:#a3b8ae;--chili:#ff6b5e;--gold:#f2b632;--line:#2a4a41}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Hind Siliguri",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Hind Siliguri",system-ui,sans-serif;margin:0;line-height:1.1}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{background:radial-gradient(circle at 85% 15%,rgba(242,182,50,.28),transparent 45%),var(--ink);background-size:cover;background-position:center;color:#f6f3e8;padding:72px 0 64px}
+header .wrap{display:grid;gap:18px}
+.name{font-size:15px;font-weight:600;color:var(--gold)}
+header{position:relative;overflow:hidden}header .wrap{position:relative;z-index:1}
+.art{position:absolute;right:max(10px,calc(50% - 500px));bottom:-6px;width:min(400px,42vw);z-index:0}
+@media(max-width:700px){.art{width:70vw;right:-12vw;opacity:.3}}
+h1{font-size:clamp(40px,8vw,84px);font-weight:800;letter-spacing:-.02em;max-width:12ch}
+header p{max-width:46ch;margin:0;color:#d9e3da}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-block;border:0;border-radius:6px;padding:13px 22px;font:600 17px "Hind Siliguri",sans-serif;cursor:pointer;text-decoration:none}
+.btn-gold{background:var(--gold);color:#12392e}.btn-line{border:2px solid #f6f3e8;color:#f6f3e8;background:transparent}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,.qty button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+section{padding:48px 0}
+h2{font-size:clamp(28px,5vw,40px);font-weight:700;margin-bottom:6px}
+.sub{color:var(--muted);margin:0 0 24px}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.pic{height:150px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:64px;background:var(--bg);overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.item h3{font-size:20px}.item p{margin:0;color:var(--muted);font-size:15px;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between}
+.price{font-weight:600;font-size:18px}
+.qty{display:flex;align-items:center;gap:10px}
+.qty button{width:36px;height:36px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font-size:20px;cursor:pointer}
+.qty span{min-width:20px;text-align:center;font-weight:600}
+.order{display:grid;gap:24px;grid-template-columns:1fr}
+@media(min-width:760px){.order{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+label{display:block;font-weight:500;margin:12px 0 4px}
+input,textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:6px;font:inherit;background:var(--bg);color:var(--ink)}
+.line{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)}
+.total{font-weight:700;font-size:20px;margin-top:12px;display:flex;justify-content:space-between}
+.empty{color:var(--muted)}
+.wa{background:#1fa855;color:#fff;width:100%;margin-top:16px}
+.note{font-size:14px;color:var(--muted);margin-top:10px}
+.err{color:var(--chili);font-size:15px;margin-top:8px;min-height:1.2em}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+<header>
+<svg class="art" viewBox="0 0 400 320" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#f6f3e8" stroke-width="6" stroke-linecap="round" opacity=".5"><path d="M150 140c-16-22 0-38 0-56s-14-26-4-40"/><path d="M200 130c-16-22 0-38 0-56s-14-26-4-40"/><path d="M250 140c-16-22 0-38 0-56s-14-26-4-40"/></g>
+<ellipse cx="200" cy="288" rx="175" ry="22" fill="#f6f3e8" opacity=".14"/>
+<path d="M70 180H330Q324 268 200 276Q76 268 70 180Z" fill="#f2b632"/>
+<path d="M84 212Q200 236 316 212" stroke="#c8302b" stroke-width="7" fill="none"/>
+<ellipse cx="200" cy="180" rx="130" ry="22" fill="#e29d17"/>
+<ellipse cx="200" cy="181" rx="117" ry="16" fill="#8a2a1a"/>
+<g fill="#4a140c"><ellipse cx="150" cy="178" rx="20" ry="8"/><ellipse cx="205" cy="184" rx="22" ry="8"/><ellipse cx="252" cy="177" rx="18" ry="7"/></g>
+<g fill="#3f9b5a"><ellipse cx="175" cy="172" rx="7" ry="3"/><ellipse cx="232" cy="174" rx="7" ry="3"/><ellipse cx="200" cy="170" rx="6" ry="3"/></g>
+<circle cx="128" cy="184" r="4" fill="#ff6b5e"/><circle cx="276" cy="183" r="4" fill="#ff6b5e"/>
+</svg>
+<div class="wrap">
+<div class="name">Mezban Ghar · kawtoli, Brahmanbaria </div>
+<h1>Real Chattogram mezbani, cooked fresh.</h1>
+<p>Take any food and get an 200ml water bottle for free, delivered hot across the city. Choose your food and send your order on WhatsApp in under a minute.</p>
+<div class="cta"><a class="btn btn-gold" href="#menu">See the menu</a><a class="btn btn-line" id="callbtn" href="https://wa.me/8801700000000" target="_blank" rel="noopener">Call to order</a></div>
+</div>
+</header>
+
+<main>
+<section id="menu"><div class="wrap">
+<h2>Menu</h2>
+<p class="sub">Please add your food. Tap + to add an item.</p>
+<div class="menu" id="menu-list"></div>
+</div></section>
+
+<section id="order" style="padding-top:0"><div class="wrap">
+<h2>Place your order</h2>
+<p class="sub">Cash on delivery. We confirm by phone within 10 minutes.</p>
+<div class="order">
+<div class="box"><h3>Your basket</h3><div id="basket"></div></div>
+<div class="box">
+<h3>Delivery details</h3>
+<label for="n">Name</label><input id="n" autocomplete="name">
+<label for="p">Phone number</label><input id="p" type="tel" autocomplete="tel" placeholder="01XXXXXXXXX">
+<label for="a">Delivery address</label><textarea id="a" rows="3" autocomplete="street-address"></textarea>
+<label for="m">Notes (optional)</label><input id="m" placeholder="Less spicy, extra rice…">
+<div class="err" id="err" role="alert"></div>
+<button class="btn wa" id="send" type="button">Send order on WhatsApp</button>
+<div class="note">Your order goes to WhatsApp number 01823205063. WhatsApp opens with the order already written. Just press send.</div>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Open daily 10:00 am – 11:00 pm · Delivery within 6 km · This site is made by Ashfaq.</div>
+<br><div>Copyright © 2025-2026 Ashfaq All rights reserved. | Terms & Privacy Policy | Cookies Settings |</div></footer>
+
+<script>
+// ---- Edit these for each client ----
+var WHATSAPP = "8801823205063"; // restaurant number, country code first, no + sign
+var HERO_IMG = ""; // restaurant photo for the top banner, e.g. "restaurant.jpg" (leave empty for plain color)
+var ITEMS = [
+ {id:1,e:"🍖",img:"",n:"Chattogram mezbani beef",d:"Slow-cooked beef in rich red gravy, the city’s classic feast dish.",p:380},
+ {id:2,e:"🍛",img:"",n:"Kala bhuna with rice",d:"Dark, smoky beef bhuna with fragrant polao.",p:420},
+ {id:3,e:"🍚",img:"",n:"Beef tehari",d:"Mustard-oil rice with tender beef pieces.",p:320},
+ {id:4,e:"🐟",img:"",n:"Hilsa fry",d:"Two pieces of crisp pan-fried ilish.",p:700},
+ {id:5,e:"🍗",img:"",n:"Chicken roast",d:"Sweet and savory roast with a boiled egg.",p:260},
+ {id:6,e:"🥘",img:"",n:"Dal and vegetable set",d:"Masoor dal, seasonal bhaji, rice, and salad.",p:200},
+ {id:7,e:"🍮",img:"",n:"Firni",d:"Chilled rice pudding with cardamom.",p:150},
+ {id:8,e:"🥛",img:"",n:"Borhani",d:"Spiced yogurt drink, 300 ml.",p:250}
+];
+var qty = {};
+function tk(x){return "৳" + x}
+function renderMenu(){
+ var box = document.getElementById("menu-list"); box.innerHTML = "";
+ ITEMS.forEach(function(it){
+  var c = document.createElement("div"); c.className = "item";
+  var pic = document.createElement("div"); pic.className = "pic"; pic.setAttribute("aria-hidden","true");
+  if(it.img){var im = document.createElement("img"); im.src = it.img; im.alt = it.n; im.loading = "lazy"; im.onerror = function(){pic.removeChild(im); pic.textContent = it.e}; pic.appendChild(im); pic.removeAttribute("aria-hidden")} else {pic.textContent = it.e}
+  var h = document.createElement("h3"); h.textContent = it.n;
+  var p = document.createElement("p"); p.textContent = it.d;
+  var r = document.createElement("div"); r.className = "row";
+  var pr = document.createElement("span"); pr.className = "price"; pr.textContent = tk(it.p);
+  var q = document.createElement("div"); q.className = "qty";
+  var m = document.createElement("button"); m.type = "button"; m.textContent = "−"; m.setAttribute("aria-label","Remove one " + it.n);
+  var s = document.createElement("span"); s.textContent = qty[it.id] || 0;
+  var a = document.createElement("button"); a.type = "button"; a.textContent = "+"; a.setAttribute("aria-label","Add one " + it.n);
+  m.onclick = function(){change(it.id,-1)}; a.onclick = function(){change(it.id,1)};
+  q.append(m,s,a); r.append(pr,q); c.append(pic,h,p,r); box.appendChild(c);
+ });
+}
+function change(id,d){qty[id] = Math.max(0,(qty[id]||0)+d); renderMenu(); renderBasket()}
+function chosen(){return ITEMS.filter(function(i){return qty[i.id]>0})}
+function total(){return chosen().reduce(function(s,i){return s+i.p*qty[i.id]},0)}
+function renderBasket(){
+ var b = document.getElementById("basket"); b.innerHTML = "";
+ var list = chosen();
+ if(!list.length){var e = document.createElement("p"); e.className = "empty"; e.textContent = "Your basket is empty. Add items from the menu above."; b.appendChild(e); return}
+ list.forEach(function(i){
+  var l = document.createElement("div"); l.className = "line";
+  var a = document.createElement("span"); a.textContent = qty[i.id] + " × " + i.n;
+  var z = document.createElement("span"); z.textContent = tk(i.p*qty[i.id]);
+  l.append(a,z); b.appendChild(l);
+ });
+ var t = document.createElement("div"); t.className = "total";
+ var x = document.createElement("span"); x.textContent = "Total (+ delivery)";
+ var y = document.createElement("span"); y.textContent = tk(total());
+ t.append(x,y); b.appendChild(t);
+}
+document.getElementById("send").onclick = function(){
+ var err = document.getElementById("err");
+ var n = document.getElementById("n").value.trim(), p = document.getElementById("p").value.trim(),
+     a = document.getElementById("a").value.trim(), m = document.getElementById("m").value.trim();
+ if(!chosen().length){err.textContent = "Add at least one item to your basket."; return}
+ if(!n || !/^[0-9+ ]{10,15}$/.test(p) || !a){err.textContent = "Enter your name, a valid phone number, and your delivery address."; return}
+ err.textContent = "";
+ var msg = "New order\n" + chosen().map(function(i){return qty[i.id] + " x " + i.n + " = " + tk(i.p*qty[i.id])}).join("\n") +
+  "\nTotal: " + tk(total()) + "\nName: " + n + "\nPhone: " + p + "\nAddress: " + a + (m ? "\nNotes: " + m : "");
+ var link = document.createElement("a"); link.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+ link.target = "_blank"; link.rel = "noopener"; document.body.appendChild(link); link.click(); document.body.removeChild(link);
+};
+document.getElementById("callbtn").href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Hello, I want to order food.");
+if(HERO_IMG){document.querySelector("header").style.backgroundImage = "linear-gradient(rgba(10,30,24,.72),rgba(10,30,24,.72)),url('" + HERO_IMG + "')"}
+renderMenu(); renderBasket();
+</script>
+</body>
 </html>
